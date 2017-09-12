@@ -10,6 +10,6 @@ function resize() {
 	mapHolder.style.width = width + 'px';
 	mapHolder.style.height = height + 'px';
 
-	// Make sure that map will filll the whole map-view area.
+	// Make sure that map will fill the whole map-view area.
 	handleZoom(1);
 }

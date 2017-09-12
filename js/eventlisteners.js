@@ -1,8 +1,13 @@
 
 /*
  *	Add event listeners.
+ *
+ *	TODO:
+ *		- Add touchstart/touchend/touchmove for mobile devices.
+ *		- Add mousedown/mouseup/mousemove for example for Safari (mac).
  */
 function addEventListeners() {
+
 	// Add pointer-event listeners of mapHolder to handle dragging of map-content.
 	mapHolder.addEventListener('pointerdown', function(e) { handleEventsOfMapContent(e, 'down'); }, false);
 	mapHolder.addEventListener('pointerup', function(e) { handleEventsOfMapContent(e, 'up'); }, false);

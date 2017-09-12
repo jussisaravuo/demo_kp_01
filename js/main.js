@@ -15,14 +15,6 @@ let mainConfig;
 function init() {
 	console.log('init()');
 
-	/**********************************************
-	 *											  *
-	 *											  *
-	 *			ADD reactJS COMPONENT !!!		  *
-	 *							  				  *
-	 *							 				  *
-	 **********************************************/
-
 	mainConfig = {
 		imgPath: 'img/',
 		maskOffsets: {left:20, right:20, top:20, bottom:20},
@@ -74,19 +66,19 @@ function initContent() {
 	mapImage = createMapImage();
 	mapImageHolder.appendChild(mapImage);
 
-	// Add zoom buttons.
-	zoomIn = greateZoomIn();
+	// Add zoom.
+	zoomBg = createZoomBg();
+	mainHolder.appendChild(zoomBg);
+	zoomIn = createZoomIn();
 	mainHolder.appendChild(zoomIn);
-	zoomOut = greateZoomOut();
+	zoomOut = createZoomOut();
 	mainHolder.appendChild(zoomOut);
 
-	checkMapSize();
+	// Make sure that map will filll the whole map-view area.
+	handleZoom(1);
 
 	// Add buttons-events
 	addEventListeners();
-}
-
-function checkMapSize() {
 }
 
 /*
@@ -97,6 +89,9 @@ function createMainHolder() {
 	return div;
 }
 
+/*
+ *	Disable body scroll.
+ */
 function disableBodyScroll() {
 	document.body.style.overflow = 'hidden';
 	document.body.scroll = 'no';
@@ -155,10 +150,30 @@ function createMapImage() {
 	return img;
 }
 
-function greateZoomIn() {
+/*
+ *	Create Zoom-bg element.
+ */
+function createZoomBg() {
+	let scale = 0.5;
+	let width = scale * 200;
+	let height = scale * 380;
+	let div = getNewDiv('zoomBg', {left:mainConfig.maskOffsets.left+'px', top:(mainConfig.maskOffsets.top - 4)+'px', width:width+'px', height:height+'px', padding:`0px 0px 0px 0px`, pointerEvents:'none', opacity:0.5});
+	let img = document.createElement('img');
+	img.src =  mainConfig.imgPath + 'zoomBg.png';
+	img.id = 'zoomBg_image';
+	img.width = width;
+	img.height = height;
+	div.appendChild(img);
+	return div;
+}
+
+/*
+ *	Create Zoom-in element.
+ */
+function createZoomIn() {
 	let width = 60;
 	let height = 60;
-	let div = getNewDiv('zoomIn', {left:30+'px', top:30+'px', width:width+'px', height:height+'px', padding:`0px 0px 0px 0px`, pointerEvents:'auto'});
+	let div = getNewDiv('zoomIn', {left:40+'px', top:48+'px', width:width+'px', height:height+'px', padding:`0px 0px 0px 0px`, pointerEvents:'auto'});
 	let img = document.createElement('img');
 	img.src =  mainConfig.imgPath + 'zoomIn.png';
 	img.id = 'zoomIn_image';
@@ -168,10 +183,13 @@ function greateZoomIn() {
 	return div;
 }
 
-function greateZoomOut() {
+/*
+ *	Create Zoom-out element.
+ */
+function createZoomOut() {
 	let width = 60;
 	let height = 60;
-	let div = getNewDiv('zoomIn', {left:30+'px', top:100+'px', width:width+'px', height:height+'px', padding:`0px 0px 0px 0px`, pointerEvents:'auto'});
+	let div = getNewDiv('zoomIn', {left:40+'px', top:112+'px', width:width+'px', height:height+'px', padding:`0px 0px 0px 0px`, pointerEvents:'auto'});
 	let img = document.createElement('img');
 	img.src =  mainConfig.imgPath + 'zoomOut.png';
 	img.id = 'zoomOut_image';
