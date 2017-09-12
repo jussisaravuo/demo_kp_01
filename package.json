@@ -1,0 +1,30 @@
+{
+  "name": "demo_kp_01",
+  "version": "1.0.0",
+  "description": "Testing js with react.js",
+  "main": "./js/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jussisaravuo/demo_kp_01.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jussisaravuo/demo_kp_01/issues"
+  },
+  "homepage": "https://github.com/jussisaravuo/demo_kp_01#readme",
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "require-install": "^0.3.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^3.5.6"
+  }
+}
